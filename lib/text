@@ -1,0 +1,54 @@
+// import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:pay/pay.dart';
+
+void main()=>runApp(
+    Gpay()
+);
+class Gpay extends StatefulWidget {
+  const Gpay({Key? key}) : super(key: key);
+  @override
+  _GpayState createState() => _GpayState();
+}
+class _GpayState extends State<Gpay>{
+  final _paymentItems = [
+   const PaymentItem(
+      label: 'Total',
+      amount: '99.99',
+      status: PaymentItemStatus.final_price,
+    )
+  ];
+  void onGooglePayResult(paymentResult) {
+    debugPrint(paymentResult.toString());
+  }
+  Widget build(BuildContext context){
+    return MaterialApp(
+    home: Scaffold(
+      appBar: AppBar(
+        title:Text('Gpay test') ,
+        centerTitle: true,
+        backgroundColor: Colors.cyan,
+        elevation: 10,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // GooglePayButton(
+          //   paymentConfigurationAsset: 'assets/gpay.json',
+          //   width: 100,
+          //   paymentItems: _paymentItems,
+          //   type: GooglePayButtonType.pay,
+          //   margin: const EdgeInsets.only(top: 15.0),
+          //   onPaymentResult: onGooglePayResult,
+          //   loadingIndicator: const Center(
+          //     child: CircularProgressIndicator(),
+          //   ),
+          // ),
+        ],
+      ),
+      ),
+    ));
+  }
+
+}
